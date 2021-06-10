@@ -1,0 +1,98 @@
+{% extends 'shop/gbasic.html' %}
+{% block title %} About Us {% endblock %}
+{% block body %}
+{% load static %}
+<section class="pt-7 pb-12">
+  <div class="container my-3">
+    <div class="row">
+      <div class="col-12">
+
+        <h3 class="mb-10 text-center ">Contact Us</h3>
+
+      </div>
+    </div>
+    <div class="row justify-content-between my-2">
+      <div class="col-12 col-md-4 col-xl-3">
+        <aside class="mb-9 mb-md-0">
+
+          <h6 class="mb-6">
+            <i class="fe fe-phone text-primary mr-4"></i> Call to Us:
+          </h6>
+
+          <p class="text-gray-500">
+            We're available from 10 am - 10 pm EST,
+            7 days a week.
+          </p>
+          <p>
+            <strong>Customer Service:</strong><br>
+            <a class="text-gray-500" href="tel:91-1-222-333-444">+91-1-222-333-444</a>
+          </p>
+          <p class="mb-0">
+            <strong>Careers:</strong><br>
+            <a class="text-gray-500" href="tel:91-1-222-333-444">+91-1-222-333-444</a>
+          </p>
+
+          <hr>
+
+          <h6 class="mb-6">
+            <i class="fe fe-mail text-primary mr-4"></i> Write to Us:
+          </h6>
+
+          <p class="text-gray-500">
+            Fill out our form and we will contact you
+            within 24 hours.
+          </p>
+          <p>
+            <strong>Customer Service:</strong><br>
+            <a class="text-gray-500" href="mailto:customer@example.com">customer@example.com</a>
+          </p>
+          <p class="mb-0">
+            <strong>Careers:</strong><br>
+            <a class="text-gray-500" href="mailto:careers@example.com">careers@example.com</a>
+          </p>
+
+          <hr>
+
+
+        </aside>
+      </div>
+      <div class="col-12 col-md-8">
+        <form accept="/shop/gcontact" method="POST">
+          {% csrf_token %}
+          <div class="form-group">
+            <label class="sr-only" for="contactName">
+              Your Name *
+            </label>
+            <input class="form-control form-control-sm" id="contactName" type="text" name="name"
+              placeholder="Your Name *" required>
+          </div>
+          <div class="form-group">
+            <label class="sr-only" for="contactEmail">
+              Your Email *
+            </label>
+            <input class="form-control form-control-sm" id="contactEmail" type="email" name="email"
+              placeholder="Your Email *" required>
+          </div>
+          <div class="form-group">
+            <label class="sr-only" for="contactTitle">
+              Title *
+            </label>
+            <input class="form-control form-control-sm" id="contactTitle" type="text" name="title" placeholder="Title *"
+              required>
+          </div>
+          <div class="form-group mb-7">
+            <label class="sr-only" for="contactMessage">
+              Message *
+            </label>
+            <textarea class="form-control form-control-sm" id="contactMessage" rows="5" name="msg"
+              placeholder="Message *" required></textarea>
+          </div>
+          <button class="btn btn-dark" onclick="JSalert()">
+            Send Message
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

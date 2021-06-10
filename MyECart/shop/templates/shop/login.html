@@ -1,0 +1,67 @@
+{% extends 'shop/gbasic.html' %}
+{% block title %} Login {% endblock %}
+{% block body %}
+{% load static %}
+<style>
+    .text {
+        padding-top: 20px;
+        padding-left: 406px;
+        padding-right: 406px;
+    }
+
+    .form-control {
+        border-radius: 15px;
+    }
+
+    input {
+        display: block;
+        width: 100%;
+        padding: .375rem .75rem;
+        font-size: 1rem;
+        line-height: 1.5;
+        color: #495057;
+        background-color: #fff;
+        background-clip: padding-box;
+        border: 1px solid #ced4da;
+        border-radius: .25rem;
+        transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+        border-radius: 8px;
+
+    }
+
+    label {
+        padding: 5px;
+        width: 460px;
+    }
+
+    .btn1 {
+        border-radius: 8px;
+        padding: .375rem .75rem;
+    }
+</style>
+
+<main class="main" style="background-image: url('')"></main>
+<div>
+    <main class="text form-signin">
+        <form action="/shop/login/" method="post">
+            {% csrf_token %}
+
+            <h1 class="text-center">MyECart</h1>
+            <h6 class="h6 mb-3 text-muted text-center my-3">Please login</h6>
+
+            {% for fm in form %}
+            <div class="text-align">{{fm.label_tag}} {{fm}} {{fm.errors|striptags}}</div>
+            {% endfor %}
+
+            {% if form.non_field_errors %}
+            {% for error in form.non_field_errors %}
+            {{error}}
+            {% endfor %}
+            {% endif %}
+
+            <button class="w-100 btn1 btn-lg btn-success my-4" type="submit" onclick="login()">Login</button>
+        </form>
+    </main>
+</div>
+
+{% endblock %}
