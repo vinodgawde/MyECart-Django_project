@@ -83,7 +83,7 @@
               <img src='/media/{{i.image}}' class="card-img-top" alt="...">
               <div class="card-body">
                 <h6 class="card-title" id="namepr{{i.id}}">{{i.product_name}}</h6>
-                <p class="card-text">{{i.product_desc|slice:"0:45"}}...</p>
+                <p class="card-text">{{i.product_desc|slice:"0:33"}}...</p>
                 <h6 class="card-title">Price:<span id="pricepr{{i.id}}">{{i.price}}</span></h6>
                 <span id="divpr{{i.id}}" class="divpr">
                   <button id="pr{{i.id}}" href="#" class="btn btn-primary cart">Add To Cart</button>
@@ -117,40 +117,32 @@
 {% endblock %}
 {% block js %}
 <script>
-    {% if msg|length != 0 %}
-    alert('{{msg}}');
-    window.location.href = "/shop"
-    {% endif %}
-</script>
-{% endblock %}
-{% block js %}
-<script>
-    var sum = 0;
-    var totalPrice = 0;
-    if ($.isEmptyObject(cart)) {
-        mystr = `<li class="list-group-item d-flex justify-content-between lh-condensed">
+  var sum = 0;
+  var totalPrice = 0;
+  if ($.isEmptyObject(cart)) {
+    mystr = `<li class="list-group-item d-flex justify-content-between lh-condensed">
                     <div>
                         <h6 class="my-0">Your Cart is Empty!!!</h6>
                         <small class="text-muted"></small>
                     </div>
                 </li>`
-        $('#items').append(mystr);
-    }
-    else {
-        for (item in cart) {
-            let name = cart[item][1];
-            let qty = cart[item][0];
-            let itemPrice = cart[item][2];
-            sum = sum + qty;
-            totalPrice = totalPrice + qty * itemPrice
-            mystr = `<li class="my-2">
+    $('#items').append(mystr);
+  }
+  else {
+    for (item in cart) {
+      let name = cart[item][1];
+      let qty = cart[item][0];
+      let itemPrice = cart[item][2];
+      sum = sum + qty;
+      totalPrice = totalPrice + qty * itemPrice
+      mystr = `<li class="my-2">
                     <div>
                         <h6 class="my-0">${name}</h6>
                     </div>
                 </li>`
-            $('#items').append(mystr);
-        }
+      $('#items').append(mystr);
     }
-    document.getElementById('cart').innerHTML = sum;
+  }
+  document.getElementById('cart').innerHTML = sum;
 </script>
 {% endblock %}
